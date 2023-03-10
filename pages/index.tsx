@@ -21,6 +21,12 @@ export default function Home() {
   const session = useSession();
   const supabase = useSupabaseClient<Database>();
 
+  async function signInWithGitHub() {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: "github",
+    });
+  }
+
   return (
     <>
       <Head>
@@ -35,14 +41,11 @@ export default function Home() {
             <Auth
               supabaseClient={supabase}
               appearance={{ theme: ThemeSupa }}
-              // providers={["github"]}
+              providers={["github"]}
             />
           </Container>
         ) : (
-          <div
-            className="w-full h-full flex flex-col justify-center items-center p-4"
-            style={{ minWidth: 250, maxWidth: 600, margin: "auto" }}
-          >
+          <div>
             <TodoList session={session} />
             <Button
               mt={4}
