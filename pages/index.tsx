@@ -17,8 +17,6 @@ import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const user = Auth.useUser();
-
   const session = useSession();
   const supabase = useSupabaseClient();
 

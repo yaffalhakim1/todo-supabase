@@ -27,17 +27,15 @@ export default function Todos({ session }: { session: Session }) {
   const user = session.user;
 
   useEffect(() => {
-    fetchTodos();
+    const fetchTodos = async () => {
+      let { data: todos, error } = await supabase
+        .from("todos")
+        .select("*")
+        .order("id", { ascending: true });
+      if (error) console.log("error", error);
+      else setTodos(todos!);
+    };
   }, []);
-
-  const fetchTodos = async () => {
-    let { data: todos, error } = await supabase
-      .from("todos")
-      .select("*")
-      .order("id", { ascending: true });
-    if (error) console.log("error", error);
-    else setTodos(todos!);
-  };
 
   const addTodo = async (taskText: string) => {
     let task = taskText.trim();
