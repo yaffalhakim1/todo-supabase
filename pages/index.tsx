@@ -2,7 +2,7 @@ import Head from "next/head";
 import { Inter } from "@next/font/google";
 import { Auth } from "@supabase/auth-ui-react";
 import TodoList from "@/components/TodoList";
-import { ThemeSupa } from "@supabase/auth-ui-react/dist/esm/common/theming/defaultThemes";
+import { ThemeSupa } from "@supabase/auth-ui-shared";
 import {
   Box,
   Button,
