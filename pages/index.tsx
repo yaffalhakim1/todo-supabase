@@ -66,7 +66,7 @@ export default function Home() {
             </Button>
             <Center>
               {" "}
-              <Flex height={window.innerHeight}>
+              <Flex height="200px">
                 <Center>
                   {" "}
                   <Text fontSize="sm" align="center">
