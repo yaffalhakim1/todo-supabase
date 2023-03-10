@@ -46,10 +46,12 @@ export default function Todos({ session }: { session: Session }) {
         .insert({ task, user_id: user.id })
         .select()
         .single();
+
       if (error) setErrorText(error.message);
       else {
         setTodos([...todos, todo]);
         setNewTaskText("");
+        toast.success("new todo added");
       }
     }
   };

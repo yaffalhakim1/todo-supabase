@@ -66,10 +66,10 @@ export default function Home() {
             </Button>
             <Center>
               {" "}
-              <Flex height="200px" align="flex-end">
+              <Flex height={window.innerHeight}>
                 <Center>
                   {" "}
-                  <Text fontSize="sm">
+                  <Text fontSize="sm" align="center">
                     Created by{" "}
                     <Link isExternal href="https://bento.me/yafialhakim">
                       Muhammad Yafi Alhakim
