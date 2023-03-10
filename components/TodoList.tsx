@@ -35,6 +35,7 @@ export default function Todos({ session }: { session: Session }) {
       if (error) console.log("error", error);
       else setTodos(todos!);
     };
+    fetchTodos();
   }, []);
 
   const addTodo = async (taskText: string) => {
@@ -62,12 +63,30 @@ export default function Todos({ session }: { session: Session }) {
     }
   };
 
+  const sortTodo = async (id: number, isDone: boolean) => {
+    try {
+      await supabase
+        .from("todos")
+        .update({ is_done: !isDone })
+        .eq("id", id)
+        .throwOnError();
+      setTodos(
+        todos.map((x: any) => {
+          if (x.id == id) x.is_done = !isDone;
+          return x;
+        })
+      );
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
   return (
     <div>
       <Center>
         {" "}
         <Text fontSize="4xl" mt={10} mx="auto">
-          TodoList
+          Todo List
         </Text>
       </Center>
 

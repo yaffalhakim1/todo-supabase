@@ -24,9 +24,6 @@ export default function Home() {
   async function signInWithGitHub() {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "github",
-      options: {
-        redirectTo: "components/TodoList",
-      },
     });
 
     if (error) {
@@ -70,13 +67,16 @@ export default function Home() {
             <Center>
               {" "}
               <Flex height="200px" align="flex-end">
-                <Text fontSize="sm">
-                  Created by{" "}
-                  <Link isExternal href="https://bento.me/yafialhakim">
-                    Muhammad Yafi Alhakim
-                  </Link>{" "}
-                  using NextJS and Supabase V2
-                </Text>
+                <Center>
+                  {" "}
+                  <Text fontSize="sm">
+                    Created by{" "}
+                    <Link isExternal href="https://bento.me/yafialhakim">
+                      Muhammad Yafi Alhakim
+                    </Link>{" "}
+                    using NextJS and Supabase V2
+                  </Text>
+                </Center>
               </Flex>
             </Center>
           </div>
