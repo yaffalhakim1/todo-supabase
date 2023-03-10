@@ -25,6 +25,12 @@ export default function Home() {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "github",
     });
+
+    if (error) {
+      console.log("error", error);
+    } else {
+      console.log("data", data);
+    }
   }
 
   return (
@@ -42,6 +48,7 @@ export default function Home() {
               supabaseClient={supabase}
               appearance={{ theme: ThemeSupa }}
               providers={["github"]}
+              redirectTo="/"
             />
           </Container>
         ) : (
