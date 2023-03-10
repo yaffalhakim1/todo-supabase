@@ -13,12 +13,13 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
+import { Database } from "@/lib/schema";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const session = useSession();
-  const supabase = useSupabaseClient();
+  const supabase = useSupabaseClient<Database>();
 
   return (
     <>
